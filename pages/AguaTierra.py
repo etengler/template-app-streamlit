@@ -13,7 +13,7 @@ user_input = st.text_input("Escriba aqui el nombre del proyecto GEE...")
 st.sidebar.title("Detección Agua-Tierra")
 st.sidebar.info(markdown)
 
-st.sidebar
+
 Map = geemap.Map(center=(-40, -64), zoom=4) #crear el mapa inetrcativo con coordenadas especificas
 Map.add_basemap('HYBRID')
 Map
