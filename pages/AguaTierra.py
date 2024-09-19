@@ -10,6 +10,6 @@ st.title("Agua-Tierra App")
 st.sidebar.title("Aplicaciones web:  DIG - IGN")
 st.sidebar.info(markdown)
 
-
+user_input = st.text_input("Escriba aqui el nombre del proyecto GEE...")
 
 
