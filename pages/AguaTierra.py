@@ -16,4 +16,4 @@ st.sidebar.info(markdown)
 
 Map = geemap.Map(center=(-40, -64), zoom=4) #crear el mapa inetrcativo con coordenadas especificas
 Map.add_basemap('HYBRID')
-Map
+Map.to_streamlit(height=700)
