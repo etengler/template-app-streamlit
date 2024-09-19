@@ -4,4 +4,3 @@ leafmap
 owslib
 streamlit
 folium
-python==3.10
