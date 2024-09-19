@@ -15,4 +15,6 @@ st.markdown("Esta aplicación permite...")
 
 user_input = st.text_input("Escriba aqui el nombre del proyecto GEE...")
 
-
+Map = geemap.Map(center=(-40, -64), zoom=4) #crear el mapa inetrcativo con coordenadas especificas
+Map.add_basemap('HYBRID')
+Map
