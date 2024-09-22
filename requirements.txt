@@ -6,3 +6,4 @@ leafmap
 owslib
 streamlit
 folium
+ee
