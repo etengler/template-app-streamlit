@@ -22,12 +22,6 @@ except:
     st.error("Error inicializando Earth Engine")
 
 
-# Accede a la credencial JSON guardada en GitHub Secrets
-service_account_info = json.loads(os.getenv("GCP_SERVICE_ACCOUNT"))
-credentials = ee.ServiceAccountCredentials(None, service_account_info)
-ee.Initialize(credentials)
-
-
 markdown = """
 Aplicaciones web desarrolladas en la Dirección de Información Geoespacial del IGN
 """
