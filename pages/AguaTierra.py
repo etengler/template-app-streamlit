@@ -5,6 +5,7 @@ import ee
 import os
 import json
 
+
 # Lee las credenciales del archivo JSON
 ruta_archivo = "C:/Users/tengl/Downloads/ee-dig-aplicaciones-774222ef12fc.json"
 with open(ruta_archivo, 'r') as archivo_json:
@@ -19,6 +20,12 @@ try:
     st.write("Earth Engine se ha inicializado correctamente")
 except:
     st.error("Error inicializando Earth Engine")
+
+
+# Accede a la credencial JSON guardada en GitHub Secrets
+service_account_info = json.loads(os.getenv("GCP_SERVICE_ACCOUNT"))
+credentials = ee.ServiceAccountCredentials(None, service_account_info)
+ee.Initialize(credentials)
 
 
 markdown = """
