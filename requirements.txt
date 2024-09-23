@@ -1,10 +1,10 @@
 --find-links=https://girder.github.io/large_image_wheels GDAL
+setuptools
+geemap
 geopandas
 leafmap
 owslib
 streamlit
 folium
-<<<<<<< HEAD
+earthengine-api
 
-=======
->>>>>>> 05e434da065aa5f1887e8dac1d46a23543440a31
