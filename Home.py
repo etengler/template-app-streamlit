@@ -8,7 +8,10 @@ Aplicaciones web desarrolladas en la Dirección de Información Geoespacial del 
 logo = "LogoIgn.png"
 
 st.sidebar.image(logo)
+
 st.title("Agua-Tierra App")
+
+
 st.sidebar.title("Aplicaciones web:  DIG - IGN")
 st.sidebar.info(markdown)
 
@@ -32,7 +35,3 @@ markdown = """
 """
 
 st.markdown(markdown)
-
-m = leafmap.Map(minimap_control=True)
-m.add_basemap("OpenTopoMap")
-m.to_streamlit(height=500)
