@@ -13,6 +13,8 @@ from shapely.geometry import Polygon
 import warnings
 import fiona
 import geopandas as gpd
+
+
 from google.oauth2 import service_account  # Importar la biblioteca adecuada
 
 st.set_page_config(layout="wide")
@@ -32,8 +34,11 @@ gcp_service_account = os.getenv('GCP_SERVICE_ACCOUNT')
 
 if gcp_service_account:
     try:
-        # Cargar las credenciales
-        credentials = service_account.Credentials.from_service_account_info(json.loads(gcp_service_account))
+        # Cargar las credenciales con el alcance correcto
+        credentials = service_account.Credentials.from_service_account_info(
+            json.loads(gcp_service_account),
+            scopes=["https://www.googleapis.com/auth/earthengine"]
+        )
         
         # Inicializar Google Earth Engine con las credenciales
         ee.Initialize(credentials)
@@ -46,7 +51,6 @@ if gcp_service_account:
         st.error(f"Se produjo un error: {e}")
 else:
     st.error("No se pudo encontrar la clave del servicio. Asegúrate de que esté configurada correctamente.")
-
 
 
 
