@@ -22,13 +22,18 @@ st.set_page_config(layout="wide")
 #ee.Initialize(project='ACA_VA_EL_NOMBRE_DEL_PROYECTO') #ESTA LINEA SE DEBE MODIFICAR
 #ee.Initialize(project='ee-dig-aplicaciones') 
 
-# Cargar la clave de servicio
-gcp_service_account = os.environ.get('GCP_SERVICE_ACCOUNT')
 
-# Autenticación con GEE
+
+
+# Acceder a la clave del servicio desde los secretos
+gcp_service_account = os.getenv('GCP_SERVICE_ACCOUNT')
+
 if gcp_service_account:
     credentials = json.loads(gcp_service_account)
     ee.Initialize(credentials)
+else:
+    st.error("No se pudo encontrar la clave del servicio. Asegúrate de que esté configurada correctamente.")
+
 
 
 
