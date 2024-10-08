@@ -29,8 +29,12 @@ st.set_page_config(layout="wide")
 gcp_service_account = os.getenv('GCP_SERVICE_ACCOUNT')
 
 if gcp_service_account:
-    credentials = json.loads(gcp_service_account)
-    ee.Initialize(credentials)
+    try:
+        credentials = json.loads(gcp_service_account)
+        ee.Initialize(credentials)
+    except json.JSONDecodeError as e:
+        st.error(f"Error al decodificar el JSON: {e}")
+        st.error(f"Contenido de gcp_service_account: {gcp_service_account}")
 else:
     st.error("No se pudo encontrar la clave del servicio. Asegúrate de que esté configurada correctamente.")
 
