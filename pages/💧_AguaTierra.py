@@ -27,20 +27,21 @@ st.set_page_config(layout="wide")
 # Cargar la clave desde la variable de entorno
 gcp_api_key = os.getenv('GCP_SERVICE_ACCOUNT')
 
+
+
 if gcp_api_key is None:
-    st.error("GCP_SERVICE_ACCOUNT no está configurado.")
+    st.error("GCP_API_KEY no está configurado.")
 else:
     try:
-        # Cargar las credenciales
+        # Cargar las credenciales desde la clave JSON
         credenciales = json.loads(gcp_api_key)
         credentials = ee.ServiceAccountCredentials(credenciales['client_email'], credenciales['private_key'])
-        
-        # Inicializar Earth Engine
+
+        # Inicializar Earth Engine con las credenciales
         ee.Initialize(credentials)
         st.success("Earth Engine se ha inicializado correctamente")
     except Exception as e:
         st.error(f"Error inicializando Earth Engine: {e}")
-
 
 
 
