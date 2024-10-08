@@ -18,31 +18,10 @@ import geopandas as gpd
 st.set_page_config(layout="wide")
 
 
-#ee.Authenticate()
+ee.Authenticate()
 #ee.Initialize(project='ACA_VA_EL_NOMBRE_DEL_PROYECTO') #ESTA LINEA SE DEBE MODIFICAR
-#ee.Initialize(project='ee-dig-aplicaciones') 
+ee.Initialize(project='ee-dig-aplicaciones') 
 
-
-
-# Cargar la clave desde la variable de entorno
-gcp_api_key = os.getenv('GCP_SERVICE_ACCOUNT')
-
-if gcp_api_key is None:
-    st.error("GCP_API_KEY no está configurado.")
-else:
-    try:
-        # Cargar las credenciales directamente desde la variable de entorno
-        credenciales = json.loads(gcp_api_key)
-
-        # Crear las credenciales de servicio de Google Earth Engine
-        private_key = credenciales['private_key'].replace('\\n', '\n')
-        credentials = ee.ServiceAccountCredentials(credenciales['client_email'], private_key)
-
-        # Inicializar Earth Engine con las credenciales
-        ee.Initialize(credentials)
-        st.success("Earth Engine se ha inicializado correctamente")
-    except Exception as e:
-        st.error(f"Error inicializando Earth Engine: {e}")
 
 
 
