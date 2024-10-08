@@ -31,8 +31,8 @@ gcp_service_account = os.getenv('GCP_SERVICE_ACCOUNT')
 if gcp_service_account:
     try:
         # Cargar las credenciales
-        credentials = json.loads(gcp_service_account)
-
+        credentials = service_account.Credentials.from_service_account_info(json.loads(gcp_service_account))
+        
         # Inicializar Google Earth Engine con las credenciales
         ee.Initialize(credentials)
         st.success("GEE inicializado correctamente.")
@@ -44,7 +44,6 @@ if gcp_service_account:
         st.error(f"Se produjo un error: {e}")
 else:
     st.error("No se pudo encontrar la clave del servicio. Asegúrate de que esté configurada correctamente.")
-
 
 
 
