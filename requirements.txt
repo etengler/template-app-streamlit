@@ -7,4 +7,5 @@ owslib
 streamlit
 folium
 earthengine-api
+fiona
 
