@@ -8,4 +8,4 @@ streamlit
 folium
 earthengine-api
 fiona
-
+google-auth
