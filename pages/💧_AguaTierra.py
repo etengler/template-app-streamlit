@@ -13,7 +13,7 @@ from shapely.geometry import Polygon
 import warnings
 import fiona
 import geopandas as gpd
-
+from google.oauth2 import service_account  # Importar la biblioteca adecuada
 
 st.set_page_config(layout="wide")
 
@@ -21,6 +21,8 @@ st.set_page_config(layout="wide")
 #ee.Authenticate()
 #ee.Initialize(project='ACA_VA_EL_NOMBRE_DEL_PROYECTO') #ESTA LINEA SE DEBE MODIFICAR
 #ee.Initialize(project='ee-dig-aplicaciones') 
+
+
 
 
 
