@@ -25,16 +25,23 @@ st.set_page_config(layout="wide")
 
 
 
-# Acceder a la clave del servicio desde los secretos
+# Obtener las credenciales desde las variables de entorno
 gcp_service_account = os.getenv('GCP_SERVICE_ACCOUNT')
 
 if gcp_service_account:
     try:
+        # Cargar las credenciales
         credentials = json.loads(gcp_service_account)
+
+        # Inicializar Google Earth Engine con las credenciales
         ee.Initialize(credentials)
+        st.success("GEE inicializado correctamente.")
     except json.JSONDecodeError as e:
         st.error(f"Error al decodificar el JSON: {e}")
-        st.error(f"Contenido de gcp_service_account: {gcp_service_account}")
+    except AttributeError as e:
+        st.error(f"Error de atributo: {e}")
+    except Exception as e:
+        st.error(f"Se produjo un error: {e}")
 else:
     st.error("No se pudo encontrar la clave del servicio. Asegúrate de que esté configurada correctamente.")
 
