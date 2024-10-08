@@ -27,15 +27,16 @@ st.set_page_config(layout="wide")
 # Cargar la clave desde la variable de entorno
 gcp_api_key = os.getenv('GCP_SERVICE_ACCOUNT')
 
-
-
 if gcp_api_key is None:
     st.error("GCP_API_KEY no está configurado.")
 else:
     try:
-        # Cargar las credenciales desde la clave JSON
+        # Cargar las credenciales directamente desde la variable de entorno
         credenciales = json.loads(gcp_api_key)
-        credentials = ee.ServiceAccountCredentials(credenciales['client_email'], credenciales['private_key'])
+
+        # Crear las credenciales de servicio de Google Earth Engine
+        private_key = credenciales['private_key'].replace('\\n', '\n')
+        credentials = ee.ServiceAccountCredentials(credenciales['client_email'], private_key)
 
         # Inicializar Earth Engine con las credenciales
         ee.Initialize(credentials)
