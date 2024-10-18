@@ -5,7 +5,7 @@ st.set_page_config(layout="wide")
 markdown = """
 Aplicaciones web desarrolladas en la Dirección de Información Geoespacial del IGN
 """
-logo = "LogoIgn.png"
+logo = 'https://github.com/etengler/template-app-streamlit/blob/72b135975a12a32bf77825be4c2c8bff5a978c34/LogoIgn.png'
 
 st.sidebar.image(logo)
 
